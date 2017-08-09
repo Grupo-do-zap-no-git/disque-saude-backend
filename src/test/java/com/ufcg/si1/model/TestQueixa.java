@@ -17,18 +17,19 @@ public class TestQueixa {
 	private Queixa queixa1;
 	private Queixa queixa2;
 	private Queixa queixa3;
+	private Pessoa taigo;
+	private Pessoa ednaldo;
+	private Pessoa priscyla;
 	
 	@Before
 	public void setup() {
-		queixa1 = new Queixa(5, "Comi uma teju e vomitei", 1, "",
-                "Taigo", "taigo@gmailcom",
-				  "Idelfonso Aires", "Paraiba", "Campina Grande");
-		queixa2 = new Queixa(6, "Bati um lampião de gás na cabeça", 2, "",
-                "Ednaldo Pereira", "ednaldo@gmailcom",
-				  "Cachoeira dos Guedes", "Paraiba", "Guarabira");
-		queixa3 = new Queixa(7, "Tomei muitos ansiolíticos de uma vez", 3, "",
-                "Priscyla", "pri@gmailcom",
-				  "Rua João Maurício", "Paraiba", "João Pessoa");
+		taigo = new Pessoa("Taigo", "taigo@gmailcom", "Idelfonso Aires", "Paraiba", "Campina Grande");
+		ednaldo = new Pessoa("Ednaldo Pereira", "ednaldo@gmailcom","Cachoeira dos Guedes", "Paraiba", "Guarabira");
+		priscyla = new Pessoa("Priscyla", "pri@gmailcom","Rua João Maurício", "Paraiba", "João Pessoa");
+		
+		queixa1 = new Queixa(5, "Comi uma teju e vomitei", 1, "",taigo);
+		queixa2 = new Queixa(6, "Bati um lampião de gás na cabeça", 2, "",ednaldo);
+		queixa3 = new Queixa(7, "Tomei muitos ansiolíticos de uma vez", 3, "",priscyla);
 	}
 		
 	@Test
