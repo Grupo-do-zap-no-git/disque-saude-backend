@@ -154,5 +154,24 @@ public class QueixaREST {
         }
 
     }
-
+    
+    @RequestMapping(value = "/situacao", method = RequestMethod.GET)
+    public ResponseEntity<String> getSituacaoQueixas() {
+    	try {
+    		String situacao = prefeitura.getSituacaoQueixas();
+    		return new ResponseEntity(situacao, HttpStatus.OK);
+    	} catch (Exception e){
+    		return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+    	}
+    }
+    
+    @RequestMapping(value = "/situacao", method = RequestMethod.PUT)
+    public ResponseEntity<String> mudarSituacaoPrefeitura(@RequestBody String situacao) {
+    	try {
+    		prefeitura.mudarSituacaoPrefeitura(situacao);
+    		return new ResponseEntity(HttpStatus.OK);
+    	} catch (Exception e){
+    		return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+    	}
+    }
 }

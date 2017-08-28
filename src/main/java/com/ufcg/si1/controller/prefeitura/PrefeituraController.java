@@ -18,8 +18,8 @@ import java.util.Collection;
 @Controller
 public class PrefeituraController implements Prefeitura {
 
-    //TODO: Strategy[n decidido ainda] com situaçao da prefeitura (normal ou extra)
-
+	SituacaoPrefeitura situacaoPrefeitura = new SituacaoNormal();
+	
     @Autowired
     private QueixaService queixaService;
     @Autowired
@@ -119,5 +119,21 @@ public class PrefeituraController implements Prefeitura {
     public Collection<Administrador> getAllAdministrador() {
         return administradorService.getAllAdministrador();
     }
+
+	@Override
+	public String getSituacaoQueixas() {
+		return situacaoPrefeitura.getSituacaoQueixa(queixaService.getQueixaAbertaPorcentagem());
+	}
+
+	@Override
+	public void mudarSituacaoPrefeitura(String situacao) {
+		if(situacao.equals("normal")){
+			situacaoPrefeitura = new SituacaoNormal();
+		} else if(situacao.equals("caos")) {
+			situacaoPrefeitura = new SituacaoCaos();
+		} else if(situacao.equals("situacao")){
+			situacaoPrefeitura = new SituacaoExtra();
+		} 
+	}
 
 }
