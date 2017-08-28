@@ -14,9 +14,10 @@ public interface EspecialidadeRepository extends JpaRepository<Especialidade,  L
 
 	Especialidade findById(long id);
 	
-	List<Especialidade> findByCodigo(int codigo);
+	Especialidade findByNome(String nome);
 
 	List<Especialidade> findByDescricao(String descricao);
+	
 	
 	
 	

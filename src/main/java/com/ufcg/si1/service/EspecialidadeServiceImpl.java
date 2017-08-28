@@ -1,6 +1,7 @@
 package com.ufcg.si1.service;
 
 import com.ufcg.si1.model.Especialidade;
+import com.ufcg.si1.model.UnidadeSaude;
 import com.ufcg.si1.repositories.EspecialidadeRepository;
 import com.ufcg.si1.exceptions.ObjetoInexistenteException;
 
@@ -27,17 +28,19 @@ public class EspecialidadeServiceImpl implements EspecialidadeService {
 		return especialidadeRepository.findById(id);
 	}
 
-	@Override
-	public List<Long> unidadesComEspecialidade(String descricao) {
-		List<Especialidade> esp = especialidadeRepository.findByDescricao(descricao.toLowerCase());
-		List<Long> idUnidades = new ArrayList<>();
-		
-		for (Especialidade especialidade: esp) {
-			idUnidades.add(especialidade.getIdUs());
-		}
-		
-		return idUnidades;
+	public List<Long> unidadeIdsComEspecialidade(String nome){
+		return (especialidadeRepository.findByNome(nome)).getIdUs();
 	}
 
+	@Override
+	public List<Long> unidadesComEspecialidade(String descricao) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public List<Especialidade >getAll() {
+		return especialidadeRepository.findAll();}
+	
+	
+	}
 
-}

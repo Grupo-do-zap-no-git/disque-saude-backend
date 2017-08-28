@@ -15,5 +15,11 @@ public interface EspecialidadeService {
 	Especialidade findById(long id);
 	
 	List<Long> unidadesComEspecialidade(String descricao);
+	
+	List<Especialidade> getAll();
+	
+	List<Long> unidadeIdsComEspecialidade(String nome);
+	
+
 
 }
