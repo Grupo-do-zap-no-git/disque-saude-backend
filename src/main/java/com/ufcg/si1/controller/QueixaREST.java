@@ -6,7 +6,7 @@ import com.ufcg.si1.controller.prefeitura.Prefeitura;
 import com.ufcg.si1.model.form.QueixaForm;
 import com.ufcg.si1.exceptions.QueixaException;
 
-import org.json.JSONObject;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
