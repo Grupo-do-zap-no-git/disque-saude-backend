@@ -17,23 +17,23 @@ public abstract class UnidadeSaude {
 
 	private Long id;
 	private String bairro;
-	private List<Long> idsEspecialidades;
+	private List<String> especialidades;
 	private int atendentes;
 	private float taxaDiariaAtendimentos;
 
-	public void setEspecialidades(List<Long> especialidades) {
-		this.idsEspecialidades = especialidades;
+	public void setEspecialidades(List<String> especialidades) {
+		this.especialidades = especialidades;
 	}
 	
 	
-	@Column(name="idsEspecialidades", updatable = false)
-	@ElementCollection(targetClass=Long.class)
-	public List<Long> getEspecialidades() {
-		return this.idsEspecialidades;
+	@Column(name="especialidades", updatable = false)
+	@ElementCollection(targetClass=String.class)
+	public List<String> getEspecialidades() {
+		return this.especialidades;
 	}
 
-	public void adicionarEspecialidade(Long esp) {
-		this.idsEspecialidades.add(esp);
+	public void adicionarEspecialidade(String esp) {
+		this.especialidades.add(esp);
 	}
 
 	@Id

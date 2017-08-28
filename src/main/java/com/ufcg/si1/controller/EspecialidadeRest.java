@@ -61,6 +61,4 @@ public class EspecialidadeRest {
 			return especialidadeService.unidadeIdsComEspecialidade(nome);
 		
 	}
-	
-
 }
