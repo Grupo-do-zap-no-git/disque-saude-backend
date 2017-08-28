@@ -33,7 +33,9 @@ public interface Prefeitura {
 
     Collection<Administrador> getAllAdministrador();
     
-    String getSituacaoQueixas();
+    int getSituacaoQueixas();
     
     void mudarSituacaoPrefeitura(String situacao);
+    
+    int getSituacaoPrefeitura();
 }

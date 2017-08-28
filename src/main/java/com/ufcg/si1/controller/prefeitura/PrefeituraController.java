@@ -121,19 +121,24 @@ public class PrefeituraController implements Prefeitura {
     }
 
 	@Override
-	public String getSituacaoQueixas() {
+	public int getSituacaoQueixas() {
 		return situacaoPrefeitura.getSituacaoQueixa(queixaService.getQueixaAbertaPorcentagem());
 	}
 
 	@Override
 	public void mudarSituacaoPrefeitura(String situacao) {
-		if(situacao.equals("normal")){
+		if(situacao.equals("\"Normal\"")){
 			situacaoPrefeitura = new SituacaoNormal();
-		} else if(situacao.equals("caos")) {
+		} else if(situacao.equals("\"Caos\"")) {
 			situacaoPrefeitura = new SituacaoCaos();
-		} else if(situacao.equals("situacao")){
+		} else if(situacao.equals("\"Extra\"")){
 			situacaoPrefeitura = new SituacaoExtra();
-		} 
+		}
+	}
+
+	@Override
+	public int getSituacaoPrefeitura() {
+		return situacaoPrefeitura.getTipo();
 	}
 
 }

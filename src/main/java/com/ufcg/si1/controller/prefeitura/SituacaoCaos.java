@@ -2,12 +2,12 @@ package com.ufcg.si1.controller.prefeitura;
 
 public class SituacaoCaos implements SituacaoPrefeitura{
 	
-	private static final String BOM = "Bom";
-	private static final String REGULAR = "Regular";
-	private static final String RUIM = "Ruim";
+	private static final int BOM = 0;
+	private static final int REGULAR = 1;
+	private static final int RUIM = 2;
 	
 	@Override
-	public String getSituacaoQueixa(double porcetagemQueixas) {
+	public int getSituacaoQueixa(double porcetagemQueixas) {
 		if (porcetagemQueixas < 0.02) {
 			return BOM;
 		} else if (porcetagemQueixas < 0.05) {
@@ -15,5 +15,14 @@ public class SituacaoCaos implements SituacaoPrefeitura{
 		} else {
 			return RUIM;
 		}
+	}
+	
+	public String toString() {
+		return "Caos";
+	}
+
+	@Override
+	public int getTipo() {
+		return 2;
 	}
 }
