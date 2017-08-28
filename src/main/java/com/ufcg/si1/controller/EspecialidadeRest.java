@@ -51,5 +51,16 @@ public class EspecialidadeRest {
 		} return new ResponseEntity<List>(unidades, HttpStatus.OK);
 	}
 	
+	@RequestMapping(value="/todas", method = RequestMethod.GET)
+	public List<Especialidade> getAll(){
+		return especialidadeService.getAll();
+	}
+	
+	@RequestMapping(value="/idsUnidadesEspecialidade/{nome}", method= RequestMethod.GET)
+		public List<Long> idsUnidades(@PathVariable String nome){
+			return especialidadeService.unidadeIdsComEspecialidade(nome);
+		
+	}
+	
 
 }

@@ -17,22 +17,23 @@ public abstract class UnidadeSaude {
 
 	private Long id;
 	private String bairro;
-	private List<Especialidade> especialidades;
+	private List<Long> idsEspecialidades;
 	private int atendentes;
 	private float taxaDiariaAtendimentos;
 
-	public void setEspecialidades(List<Especialidade> especialidades) {
-		this.especialidades = especialidades;
+	public void setEspecialidades(List<Long> especialidades) {
+		this.idsEspecialidades = especialidades;
+	}
+	
+	
+	@Column(name="idsEspecialidades", updatable = false)
+	@ElementCollection(targetClass=Long.class)
+	public List<Long> getEspecialidades() {
+		return this.idsEspecialidades;
 	}
 
-	@Column(name = "especialidades", updatable = false)
-	@OneToMany(cascade = CascadeType.ALL)
-	public List<Especialidade> getEspecialidades() {
-		return this.especialidades;
-	}
-
-	public void adicionarEspecialidade(Especialidade esp) {
-		this.especialidades.add(esp);
+	public void adicionarEspecialidade(Long esp) {
+		this.idsEspecialidades.add(esp);
 	}
 
 	@Id
