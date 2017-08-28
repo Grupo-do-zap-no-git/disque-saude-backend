@@ -32,6 +32,10 @@ public interface Prefeitura {
     Administrador adicionaAdministrador(Administrador adm) throws AdministradorException;
 
     Collection<Administrador> getAllAdministrador();
-
-
+    
+    int getSituacaoQueixas();
+    
+    void mudarSituacaoPrefeitura(String situacao);
+    
+    int getSituacaoPrefeitura();
 }

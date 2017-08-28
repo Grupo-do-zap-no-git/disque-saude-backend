@@ -5,6 +5,8 @@ import java.util.Collection;
 import com.ufcg.si1.controller.prefeitura.Prefeitura;
 import com.ufcg.si1.model.form.QueixaForm;
 import com.ufcg.si1.exceptions.QueixaException;
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +15,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ufcg.si1.model.queixa.Queixa;
 import com.ufcg.si1.service.QueixaService;
+
 
 
 @RestController
@@ -27,11 +31,6 @@ public class QueixaREST {
 
     @Autowired
     private Prefeitura prefeitura;
-
-    /* situação normal =0
-        situação extra =1
-     */
-    private int situacaoAtualPrefeitura = 0;
 
     /**
      * URI do recurso: /queixa
@@ -153,5 +152,35 @@ public class QueixaREST {
         }
 
     }
-
+    
+    @RequestMapping(value = "/situacao", method = RequestMethod.GET)
+    public ResponseEntity<Integer> getSituacaoQueixas() {
+    	try {
+    		int situacao = prefeitura.getSituacaoQueixas();
+    		return new ResponseEntity(situacao, HttpStatus.OK);
+    	} catch (Exception e){
+    		return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+    	}
+    }
+    
+    @RequestMapping(value = "/situacao", method = RequestMethod.PUT)
+    public ResponseEntity<String> mudarSituacaoPrefeitura(@RequestBody String situacao) {
+    	try {
+    		prefeitura.mudarSituacaoPrefeitura(situacao);
+    		return new ResponseEntity(HttpStatus.OK);
+    	} catch (Exception e){
+    		return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
+    	}
+    }
+    
+    @RequestMapping(value = "/situacaoPrefeitura", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Integer> getSituacaoPrefeitura (){
+    		try {
+    			int situacao = prefeitura.getSituacaoPrefeitura();
+    			return new ResponseEntity(situacao, HttpStatus.OK);
+    		} catch (Exception e) {
+    			return new ResponseEntity(HttpStatus.BAD_REQUEST);
+    		}
+    }
 }
